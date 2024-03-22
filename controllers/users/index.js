@@ -6,8 +6,8 @@ require("dotenv").config();
 
 exports.signUp = async (req, res) => {
   try {
-    const { firstName, lastName, password, phoneNumber, role } = req.body;
-    const isExistingUser = await Users.findOne({ phoneNumber });
+    const { firstName, lastName, password, email, role } = req.body;
+    const isExistingUser = await Users.findOne({ email });
     if (isExistingUser) {
       return res.status(409).json({ message: "already_registered" });
     } else {
@@ -18,7 +18,7 @@ exports.signUp = async (req, res) => {
         firstName,
         lastName,
         password: hashedPassword,
-        phoneNumber,
+        email,
         role,
       });
       await newUser.save();
@@ -32,8 +32,8 @@ exports.signUp = async (req, res) => {
 
 exports.signIn = async (req, res) => {
   try {
-    const { phoneNumber, password } = req.body;
-    const user = await Users.findOne({ phoneNumber });
+    const { email, password } = req.body;
+    const user = await Users.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "inavlid_credentials" });
     }
@@ -49,7 +49,7 @@ exports.signIn = async (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        phoneNumber: user.phoneNumber,
+        email: user.email,
         address: user.address,
         role: user.role,
       };
