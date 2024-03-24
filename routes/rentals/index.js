@@ -1,7 +1,13 @@
 const express = require("express");
-const router = express.Router();
-const { bookRide } = require("../../controllers/rentals");
+const rentalsRouter = express.Router();
+const {
+  bookRide,
+  getAvailableCars,
+  isCarAvailable,
+} = require("../../controllers/rentals");
 
-router.post("/bookRide", bookRide);
+rentalsRouter.route("/bookRide").post(bookRide);
+rentalsRouter.route("/getAvailableCars").post(getAvailableCars);
+rentalsRouter.route("/isCarAvailable").post(isCarAvailable);
 
-module.exports = router;
+module.exports = rentalsRouter;

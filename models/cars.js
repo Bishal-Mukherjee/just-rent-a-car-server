@@ -25,6 +25,10 @@ const carSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  totalCount: {
+    type: Number,
+    default: 1,
+  },
 });
 
 module.exports = Cars = mongoose.model("cars", carSchema);

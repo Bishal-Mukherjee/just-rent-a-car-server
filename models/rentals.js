@@ -41,20 +41,12 @@ const rentalSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  pickupDate: {
-    type: String,
+  pickupDateTime: {
+    type: Date,
     required: true,
   },
-  pickupTime: {
-    type: String,
-    required: true,
-  },
-  returnDate: {
-    type: String,
-    required: true,
-  },
-  returnTime: {
-    type: String,
+  returnDateTime: {
+    type: Date,
     required: true,
   },
   totalDays: {
@@ -63,7 +55,7 @@ const rentalSchema = mongoose.Schema({
   },
   totalCost: {
     type: Number,
-    // required: true,
+    required: true,
   },
   status: {
     type: String,

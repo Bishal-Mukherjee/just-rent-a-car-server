@@ -25,7 +25,7 @@ server.get("/", (req, res) => {
 // server.use("/api/admin");
 server.use("/api/users", require("./routes/users"));
 server.use("/api/cars", require("./routes/cars"));
-// server.use("/api/rentals", require("./routes/rentals"));
+server.use("/api/rentals", require("./routes/rentals"));
 
 server.listen(PORT, () => {
   console.log("🚀 SERVER LISTENING ON", PORT);
